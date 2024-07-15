@@ -10,16 +10,17 @@ const Header = () => {
     <header className='header shadow-md w-full h-16 px-2 md:px-4 bg-[#0f172a]'>
       <div className='flex items-center h-full justify-between'>
         <Link to={""}>
-          <div className='h-20'>
+          {/* Conditionally render logo based on screen size */}
+          <div className='h-16 md:h-20 hidden md:block'>
             <img src={logo} className="h-full" alt="Logo" />
           </div>
         </Link>
 
-        <div className='flex items-center text-white'>
+        <div className='flex items-center text-white flex-grow'>
           <input
             type='text'
             placeholder='Enter Product'
-            className='p-2 rounded-l-full w-80 md:w-96'
+            className='p-2 rounded-l-full w-full md:w-80 lg:w-96'
           />
           <div className='text-2xl min-w-[60px] p-2 bg-white text-black rounded-r-full'>
             <CiSearch />
