@@ -10,13 +10,13 @@ const Header = () => {
     <header className='header shadow-md w-full h-16 px-2 md:px-4 bg-[#0f172a]'>
       <div className='flex items-center h-full justify-between'>
         <Link to={""}>
-          {/* Conditionally render logo based on screen size */}
           <div className='h-16 md:h-20 hidden md:block'>
             <img src={logo} className="h-full" alt="Logo" />
           </div>
         </Link>
 
-        <div className='flex items-center text-white flex-grow'>
+        {/* Centered search input */}
+        <div className='flex items-center text-white flex-grow justify-center'>
           <input
             type='text'
             placeholder='Enter Product'
