@@ -25,12 +25,14 @@ const Login = () => {
     e.preventDefault();
     const dataResponse = await fetch(SummaryApi.signIn.url, {
       method: SummaryApi.signIn.method,
+      credentials: "include",
       headers: {
         "content-type": "application/json"
       },
       body: JSON.stringify(data)
     })
     const dataApi = await dataResponse.json()
+
     if (dataApi.success) {
       toast.success(dataApi.message)
     }
