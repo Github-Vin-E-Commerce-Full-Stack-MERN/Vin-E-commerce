@@ -7,20 +7,20 @@ import { FaShoppingCart } from 'react-icons/fa';
 
 const Header = () => {
   return (
-    <header className='header shadow-md w-full h-16 px-2 md:px-4 bg-[#0f172a]'>
+    <header className='header shadow-md w-full h-16 px-2 md:px-4 bg-[#0f172ad0]'>
       <div className='flex items-center h-full justify-between'>
         <Link to={""}>
-          <div className='h-16 md:h-20 hidden md:block pt-3.5'>
-            <Logo w={50} h={50}/>
+          <div className='hidden md:block'>
+            <Logo w={40} h={40}/>
           </div>
         </Link>
 
-        {/* Centered search input */}
+        {/* Centered  */}
         <div className='flex items-center text-white flex-grow justify-center'>
           <input
             type='text'
             placeholder='Enter Product'
-            className='p-2 rounded-l-full w-full md:w-80 lg:w-96'
+            className='p-2 rounded-l-full w-98 md:w-80 lg:w-95'
           />
           <div className='text-2xl min-w-[60px] p-2 bg-white text-black rounded-r-full'>
             <CiSearch />
