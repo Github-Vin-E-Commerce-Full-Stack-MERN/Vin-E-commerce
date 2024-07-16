@@ -2,8 +2,8 @@ import React from 'react';
 import Logo from './Logo';
 import { Link } from 'react-router-dom';
 import { PiUserCircleFill } from "react-icons/pi";
-import { IoCartOutline } from "react-icons/io5";
 import { CiSearch } from 'react-icons/ci';
+import { FaShoppingCart } from 'react-icons/fa';
 
 const Header = () => {
   return (
@@ -30,12 +30,18 @@ const Header = () => {
         <div className='flex items-center text-white gap-5 md:gap-7'>
           <div><Link to={""}>Home</Link></div>
 
-          <div className='text-3xl text-slate-white w-13'>
-            <IoCartOutline />
+          <div className='text-3xl text-slate-white w-13 relative flex items-center'>
+            <span className="mr-1"><FaShoppingCart /></span>
+            <div className='bg-red-600 text-white w-5 p-1 h-5 rounded-full flex items-center justify-center'>
+              <p className='text-xs m-0'>0</p>
+            </div>
           </div>
+
+
 
           <div className='text-3xl text-slate-white'>
             <PiUserCircleFill />
+
           </div>
         </div>
       </div>
