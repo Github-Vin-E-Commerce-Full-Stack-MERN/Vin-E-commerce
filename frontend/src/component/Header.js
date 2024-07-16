@@ -9,14 +9,14 @@ const Header = () => {
   return (
     <header className="header shadow-md w-full h-16 px-2 md:px-4 bg-[#0f172ad0]">
       <div className="flex items-center h-full justify-between">
-        <Link to={""}>
-          <div className="hidden md:block">
+        <Link to={"/"}>
+          <div className="">
             <Logo w={40} h={40} />
           </div>
         </Link>
 
         {/* Centered  */}
-        <div className="flex items-center text-white flex-grow justify-center">
+        <div className="hidden md:flex items-center text-white flex-grow justify-center">
           <input
             type="text"
             placeholder="Enter Product"
@@ -46,7 +46,7 @@ const Header = () => {
           </div>
 
           <div>
-            <button className="text-xl px-3 py-1 bg-red-600 rounded-full text-white hover:bg-red-800">Login</button>
+            <Link to={"/login"} className="text-xl px-3 py-1 bg-red-600 rounded-full text-white hover:bg-red-800">Login</Link>
           </div>
         </div>
       </div>
