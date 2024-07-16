@@ -21,7 +21,7 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
+
 
   }
 
@@ -29,7 +29,7 @@ const Login = () => {
 
   return (
     <section id="login">
-      <div className="mx-auto container px-4">
+      <div className="mx-auto container px-4 mt-4">
         <div className="bg-white p-4 w-full max-w-sm mx-auto">
           <div className="w-20 h-20 mx-auto">
             <img src={loginIcons} alt="login icon"></img>
