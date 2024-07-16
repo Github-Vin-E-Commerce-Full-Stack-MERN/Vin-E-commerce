@@ -1,16 +1,16 @@
-import './App.css';
-import Header from './component/Header';
-import { Outlet } from 'react-router-dom';
-import Footer from './component/Footer';
+import "./App.css";
+import Header from "./component/Header";
+import { Outlet } from "react-router-dom";
+import Footer from "./component/Footer";
 function App() {
   return (
     <>
-      <div><Header /></div><br />
+      <Header />
 
-      <main className="content">
+      <main className="min-h-[calc(100vh-120px)]">
         <Outlet />
       </main>
-      <div><Footer /></div>
+      <Footer />
     </>
   );
 }
