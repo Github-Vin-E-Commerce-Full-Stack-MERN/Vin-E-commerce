@@ -39,7 +39,7 @@ const Header = () => {
 
 
 
-          <div className='text-3xl text-slate-white'>
+          <div className='text-4xl text-slate-white'>
             <PiUserCircleFill />
 
           </div>
