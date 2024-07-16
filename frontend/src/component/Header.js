@@ -44,6 +44,10 @@ const Header = () => {
           <div className="text-3xl text-slate-white cursor-pointer">
             <PiUserCircleFill />
           </div>
+
+          <div>
+            <button className="text-xl px-3 py-1 bg-red-600 rounded-full text-white hover:bg-red-800">Login</button>
+          </div>
         </div>
       </div>
     </header>
