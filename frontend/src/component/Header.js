@@ -10,8 +10,8 @@ const Header = () => {
     <header className='header shadow-md w-full h-16 px-2 md:px-4 bg-[#0f172a]'>
       <div className='flex items-center h-full justify-between'>
         <Link to={""}>
-          <div className='h-16 md:h-20 hidden md:block pt-1.5'>
-            <Logo w={70} h={70}/>
+          <div className='h-16 md:h-20 hidden md:block pt-3.5'>
+            <Logo w={50} h={50}/>
           </div>
         </Link>
 
