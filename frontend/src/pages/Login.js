@@ -39,7 +39,7 @@ const Login = () => {
       toast.success(dataApi.message)
       navigate("/")
     }
-    if (data.error) {
+    if (dataApi.error) {
       toast.error(dataApi.message)
     }
 
