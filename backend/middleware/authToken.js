@@ -6,7 +6,7 @@ async function authToken(req, res, next) {
 
     if (!token) {
       return res.status(200).json({
-        message: "user not login",
+        message: "Please login ...",
         error: true,
         success: false
       })
@@ -17,7 +17,7 @@ async function authToken(req, res, next) {
       console.log("decoded", decoded)
 
       if (err) {
-        console.log("error auth", err)
+        console.log("Error auth", err)
       }
       req.userId = decoded?._id
 

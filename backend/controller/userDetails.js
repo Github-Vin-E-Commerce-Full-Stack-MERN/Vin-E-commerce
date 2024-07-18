@@ -8,7 +8,7 @@ async function userDetailsController(req, res) {
       data: user,
       error: false,
       success: true,
-      message: "user Detail"
+      message: "User Detail"
     })
     console.log("user", user)
   }

@@ -38,7 +38,7 @@ const SignUp = () => {
       const dataRes = await fetch(SummaryApi.signUp.url, {
         method: SummaryApi.signUp.method,
         headers: {
-          "content-type" : "application/json"
+          'content-type' : 'application/json'
         },
         body : JSON.stringify(data)
       })

@@ -30,9 +30,9 @@ const Login = () => {
     e.preventDefault();
     const dataResponse = await fetch(SummaryApi.signIn.url, {
       method: SummaryApi.signIn.method,
-      credentials: "include",
+      credentials: 'include',
       headers: {
-        "content-type": "application/json"
+        'content-type': 'application/json'
       },
       body: JSON.stringify(data)
     })
