@@ -4,8 +4,11 @@ import { Link } from "react-router-dom";
 import { PiUserCircleFill } from "react-icons/pi";
 import { CiSearch } from "react-icons/ci";
 import { FaShoppingCart } from "react-icons/fa";
+import { useSelector } from "react-redux";
 
 const Header = () => {
+  const user = useSelector(state => state?.user?.user)
+
   return (
     <header className="header shadow-md w-full h-16 px-2 md:px-4 bg-[#0f172ad0]">
       <div className="flex items-center h-full justify-between">
@@ -42,7 +45,10 @@ const Header = () => {
           </div>
 
           <div className="text-3xl text-slate-white cursor-pointer">
-            <PiUserCircleFill />
+          {
+            user?.profilePic ? (<img src={user?.profilePic} className="w-10 h-10 rounded-full" alt={user?.name}></img>) : (<PiUserCircleFill />)
+          }
+            
           </div>
 
           <div>
