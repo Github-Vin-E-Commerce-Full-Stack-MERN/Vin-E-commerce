@@ -1,13 +1,38 @@
 import React from "react";
 import Logo from "./Logo";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { PiUserCircleFill } from "react-icons/pi";
 import { CiSearch } from "react-icons/ci";
 import { FaShoppingCart } from "react-icons/fa";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import SummaryApi from "../common";
+import {toast} from 'react-toastify';
+import {setUserDetails} from '../store/userSlice';
 
 const Header = () => {
   const user = useSelector(state => state?.user?.user)
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+
+  const handleLogout = async() => {
+    const fetchData = await fetch(SummaryApi.logout_user.url,{
+      method : SummaryApi.logout_user.method,
+      credentials : 'include',
+    })
+
+    const dataApi = await fetchData.json()
+
+    if (dataApi.success) {
+      toast.success(dataApi.message)
+      dispatch(setUserDetails(null))
+      navigate("/")
+    }
+
+    if (dataApi.error) {
+      toast.error(dataApi.message)
+    }
+
+  }
 
   return (
     <header className="header shadow-md w-full h-16 px-2 md:px-4 bg-[#0f172ad0]">
@@ -52,7 +77,13 @@ const Header = () => {
           </div>
 
           <div>
-            <Link to={"/login"} className="text-xl px-3 py-1 bg-red-600 rounded-full text-white hover:bg-red-800">Login</Link>
+          {
+            user?._id ? (
+              <button onClick={handleLogout} className="text-xl px-3 py-1 bg-red-600 rounded-full text-white hover:bg-red-800">Log Out</button>
+            ) : (
+              <Link to={"/login"} className="text-xl px-3 py-1 bg-red-600 rounded-full text-white hover:bg-red-800">Login</Link>
+            )
+          }
           </div>
         </div>
       </div>
