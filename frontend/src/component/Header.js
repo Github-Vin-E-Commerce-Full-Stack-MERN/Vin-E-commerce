@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Logo from "./Logo";
 import { Link, useNavigate } from "react-router-dom";
 import { PiUserCircleFill } from "react-icons/pi";
@@ -6,33 +6,33 @@ import { CiSearch } from "react-icons/ci";
 import { FaShoppingCart } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import SummaryApi from "../common";
-import {toast} from 'react-toastify';
-import {setUserDetails} from '../store/userSlice';
+import { toast } from "react-toastify";
+import { setUserDetails } from "../store/userSlice";
 
 const Header = () => {
-  const user = useSelector(state => state?.user?.user)
-  const dispatch = useDispatch()
-  const navigate = useNavigate()
+  const user = useSelector((state) => state?.user?.user);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const [menuDisplay, setMenuDisplay] = useState(false);
 
-  const handleLogout = async() => {
-    const fetchData = await fetch(SummaryApi.logout_user.url,{
-      method : SummaryApi.logout_user.method,
-      credentials : 'include',
-    })
+  const handleLogout = async () => {
+    const fetchData = await fetch(SummaryApi.logout_user.url, {
+      method: SummaryApi.logout_user.method,
+      credentials: "include",
+    });
 
-    const dataApi = await fetchData.json()
+    const dataApi = await fetchData.json();
 
     if (dataApi.success) {
-      toast.success(dataApi.message)
-      dispatch(setUserDetails(null))
-      navigate("/")
+      toast.success(dataApi.message);
+      dispatch(setUserDetails(null));
+      navigate("/");
     }
 
     if (dataApi.error) {
-      toast.error(dataApi.message)
+      toast.error(dataApi.message);
     }
-
-  }
+  };
 
   return (
     <header className="header shadow-md w-full h-16 px-2 md:px-4 bg-[#0f172ad0]">
@@ -69,21 +69,47 @@ const Header = () => {
             </div>
           </div>
 
-          <div className="text-3xl text-slate-white cursor-pointer">
-          {
-            user?.profilePic ? (<img src={user?.profilePic} className="w-10 h-10 rounded-full" alt={user?.name}></img>) : (<PiUserCircleFill />)
-          }
-            
+          <div  className="relative flex justify-center">
+            <div className="text-3xl text-slate-white cursor-pointer" onClick={() => setMenuDisplay(prev => !prev)}>
+              {user?.profilePic ? (
+                <img
+                  src={user?.profilePic}
+                  className="w-10 h-10 rounded-full"
+                  alt={user?.name}
+                ></img>
+              ) : (
+                <PiUserCircleFill />
+              )}
+            </div>
+
+            {
+              menuDisplay && (
+                <div className="absolute bg-white bottom-0 top-11 h-fit text-black p-2 shadow-lg rounded">
+              <nav>
+                <Link to={"admin-panel"} className="whitespace-nowrap hover:bg-slate-100">Admin Panel</Link>
+              </nav>
+            </div>
+              )
+            }
+ 
           </div>
 
           <div>
-          {
-            user?._id ? (
-              <button onClick={handleLogout} className="text-xl px-3 py-1 bg-red-600 rounded-full text-white hover:bg-red-800">Log Out</button>
+            {user?._id ? (
+              <button
+                onClick={handleLogout}
+                className="text-xl px-3 py-1 bg-red-600 rounded-full text-white hover:bg-red-800"
+              >
+                Log Out
+              </button>
             ) : (
-              <Link to={"/login"} className="text-xl px-3 py-1 bg-red-600 rounded-full text-white hover:bg-red-800">Login</Link>
-            )
-          }
+              <Link
+                to={"/login"}
+                className="text-xl px-3 py-1 bg-red-600 rounded-full text-white hover:bg-red-800"
+              >
+                Login
+              </Link>
+            )}
           </div>
         </div>
       </div>
